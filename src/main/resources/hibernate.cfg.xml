@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- Указываем официальный драйвер -->
+        <property name="hibernate.connection.driver_class">
+            com.microsoft.sqlserver.jdbc.SQLServerDriver
+        </property>
+
+        <!-- Пример строки подключения:
+             - localhost:1433 (порт)
+             - databaseName=vuzi
+             - encrypt и trustServerCertificate часто нужны для локальной отладки
+        -->
+        <property name="hibernate.connection.url">
+            jdbc:sqlserver://localhost:1433;encrypt=true;trustServerCertificate=true
+        </property>
+
+        <!-- Указываем логин / пароль -->
+        <property name="hibernate.connection.username">user1</property>
+        <property name="hibernate.connection.password">sa</property>
+
+        <!-- Диалект для MS SQL Server 2012+ -->
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.SQLServer2012Dialect
+        </property>
+
+        <!-- Автоматическое создание/обновление схем (для разработки) -->
+        <property name="hibernate.hbm2ddl.auto">create</property>
+
+        <!-- Логировать SQL -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Маппинг вашей сущности (пример) -->
+        <mapping class="org.example.Vuz" />
+
+    </session-factory>
+</hibernate-configuration>
