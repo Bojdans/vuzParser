@@ -30,7 +30,7 @@ public class Main {
         Configuration configuration = new Configuration();
         configuration.configure("hibernate.cfg.xml");
         configuration.addAnnotatedClass(Vuz.class);
-        // 2) Создаём реестр сервисов (ServiceRegistry)
+        
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(configuration.getProperties())
                 .build();
@@ -75,9 +75,6 @@ public class Main {
                 });
                 System.out.println(vuziki);
 
-                // 3) На основе реестра строим SessionFactory
-
-                // 4) Открываем сессию и работаем с ней
 
                 vuziki.forEach(vuzik -> {
                     try (Session session = sessionFactory.openSession()) {
